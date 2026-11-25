@@ -1,0 +1,25 @@
+{
+  "name": "ics-contact-sync",
+  "version": "0.1.0",
+  "description": "Daily one-way sync from Celia's Contact Vault (read-only) into ICS Mailchimp audiences, with an approval queue and a Monday report.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "daily": "node src/jobs/daily.js",
+    "weekly": "node src/jobs/weekly.js",
+    "test": "node --test test/*.test.js",
+    "check:portal": "node -e \"require('esbuild').transform(require('fs').readFileSync('portal/ContactSync.jsx','utf8'),{loader:'jsx',jsx:'automatic'}).then(()=>console.log('portal OK'))\""
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true
+  }
+}
